@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="duke" class="test.spring.springinaction.common.springidol.Juggler">
+		<constructor-arg value='15' />
+	</bean>
+
+	<bean id='sonnet29' class="test.spring.springinaction.common.springidol.Sonnet29" />
+	<bean id='poeticDuke'
+		class='test.spring.springinaction.common.springidol.PoeticJuggler'>
+		<constructor-arg value="15" />
+		<constructor-arg ref="sonnet29" />
+	</bean>
+
+	<bean id='theStage' class="test.spring.springinaction.common.springidol.Stage"
+		factory-method='getInstance' />
+	<!-- <bean id='ticket' class="Ticket" scope='prototype/singleton'/> 
+	<bean id='auditorium' class="Auditorium" init-method='init'/> -->
+
+
+
+</beans>
