@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 声明bean -->
+	<bean id="person" class="test.Person">
+		<!-- 构造器注入 -->
+		<constructor-arg value='jh' />
+		<constructor-arg value='30' />
+	</bean>
+
+	<!-- 注入bean属性 -->
+	<bean id="person" class="test.Person">
+		<property name="age" value='30' />
+		<property name="brain" ref="brain" />
+		<!-- 内部bean -->
+		<property name='character'>
+			<bean class='test.Character' />
+		</property>
+		<!-- 装配集合List Set Array -->
+		<property name="hands">
+			<list>
+				<ref bean='left' />
+				<ref bean='right' />
+			</list>
+		</property>
+		<!-- 装配集合Map -->
+		<property name="">
+			<map>
+				<entry key='' value-ref='' />
+				<entry key='' value-ref='' />
+			</map>
+		</property>
+		<!-- 装配集合properties key,value必须都是String -->
+		<property name="">
+			<props>
+				<prop key=''>value</prop>
+			</props>
+		</property>
+		<!-- 装配空值 -->
+		<property name="null">
+			<null />
+		</property>
+	</bean>
+
+	<!-- 工厂方法创建bean -->
+	<bean factory-method='createEarth' id="earth" class='test.Earth' />
+
+	<!-- bean作用域 -->
+	<!-- singleton 在每个spring容器中，一个bean定义只有一个对象实例（默认） -->
+	<!-- prototype 允许bean的定义可以被实例化任意次（每次调用都创建一个实例） -->
+	<!-- request 在一次http请求中，每个bean定义对应一个实例，在基于web的spring上下文中有效 -->
+	<!-- session 在一次http session中，每个bean定义对应一个实例，在基于web的spring上下文中有效 -->
+	<!-- global-session 在一个全局http session中，每个bean定义对应一个实例，在Portler上下文中有效 -->
+	<bean scope='prototype' id="person" class="test.Person" />
+
+	<!-- 初始化和销毁bean -->
+	<bean init-method='born' destroy-method='die' id="person" class="test.Person" />
+
+	<!-- 自动装配 autowire='byName/byType/constructor/autodetect(constructor->byType)' -->
+	<bean id="beanPostHandler" class="test.spring.springinaction.bean.BeanPostHandler" />
+
+	<context:annotation-config />
+</beans>
