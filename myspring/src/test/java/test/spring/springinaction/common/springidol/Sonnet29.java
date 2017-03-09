@@ -1,5 +1,6 @@
 package test.spring.springinaction.common.springidol;
 
+@OneTypePoem
 public class Sonnet29 implements Poem {
 
 	@Override

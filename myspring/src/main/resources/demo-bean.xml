@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- 声明bean -->
 	<bean id="person" class="test.Person">
@@ -62,5 +64,14 @@
 	<!-- 自动装配 autowire='byName/byType/constructor/autodetect(constructor->byType)' -->
 	<bean id="beanPostHandler" class="test.spring.springinaction.bean.BeanPostHandler" />
 
+	<!-- 注解装配 -->
 	<context:annotation-config />
+
+
+	<!-- 自动检查 -->
+	<!-- @Component 通用的构造型注解，标识该类为Spring组件 -->
+	<!-- @Controller 标识将该类定义为Spring MVC controller -->
+	<!-- @Repository 标识将该类定义为数据仓库 -->
+	<!-- @Service 标识将该类定义为数据仓库服务 -->
+	<context:component-scan base-package='test' />
 </beans>

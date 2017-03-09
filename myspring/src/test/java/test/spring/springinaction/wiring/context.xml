@@ -5,10 +5,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-        
-        
+
+
 	<bean id="duke" class="test.spring.springinaction.common.springidol.Juggler">
-		<constructor-arg value='15' />
+		<constructor-arg value='151' />
 	</bean>
 
 	<bean id='sonnet29' class="test.spring.springinaction.common.springidol.Sonnet29" />
@@ -17,7 +17,7 @@
 		<constructor-arg value="15" />
 		<constructor-arg ref="sonnet29" />
 	</bean>
-	
+
 	<bean id='poeticDuke2'
 		class='test.spring.springinaction.common.springidol.PoeticJuggler2'>
 		<constructor-arg value="15" />
@@ -25,11 +25,29 @@
 
 	<bean id='theStage' class="test.spring.springinaction.common.springidol.Stage"
 		factory-method='getInstance' />
-	<!-- <bean id='ticket' class="Ticket" scope='prototype/singleton'/> 
-	<bean id='auditorium' class="Auditorium" init-method='init'/> -->
+	<!-- <bean id='ticket' class="Ticket" scope='prototype/singleton'/> <bean 
+		id='auditorium' class="Auditorium" init-method='init'/> -->
 
 
 	<!-- 注解装配 -->
 	<context:annotation-config />
+	
+	
+	<!-- 自动检查 -->
+	<!-- @Component 通用的构造型注解，标识该类为Spring组件-->
+	<!-- @Controller 标识将该类定义为Spring MVC controller-->
+	<!-- @Repository 标识将该类定义为数据仓库-->
+	<!-- @Service 标识将该类定义为数据仓库服务-->
+	<context:component-scan base-package='test.spring.springinaction.common.springidol' />
+
+	<!-- 读取properties文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/config/*.properties</value>
+			</list>
+		</property>
+	</bean>
 
 </beans>
