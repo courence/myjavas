@@ -3,7 +3,7 @@ package test.spring.springinaction.wiring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import test.spring.springinaction.common.Knight;
+import test.spring.springinaction.common.springidol.ComponentTest;
 import test.spring.springinaction.common.springidol.Performer;
 
 public class Main {
@@ -20,6 +20,9 @@ public class Main {
 		//注解注入装配
 		Performer duke2 = (Performer) context.getBean("poeticDuke2");
 		duke2.perform();
+		
+		
+		ComponentTest test = (ComponentTest) context.getBean("componentTest");
 
 	}
 
