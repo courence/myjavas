@@ -15,7 +15,7 @@ public class StackOverFlowThread {
 		while(true){
 			Thread thread = new Thread(new Runnable(){
 
-				@Override
+
 				public void run() {
 					dontStop();
 				}

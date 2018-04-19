@@ -22,7 +22,6 @@ public class DynamicProxyTest {
 			return Proxy.newProxyInstance(originalObj.getClass().getClassLoader(),
 					originalObj.getClass().getInterfaces(), this);
 		}
-		@Override
 		public Object invoke(Object proxy, Method method, Object[] args)
 				throws Throwable {
 			System.out.println("welcome");

@@ -3,7 +3,6 @@ package com.courence.gc;
 public class DeadLockTest {
 	
 	static class SynAddRunable implements Runnable{
-		@Override
 		public void run() {
 			synchronized (Integer.valueOf(a)){
 				synchronized (Integer.valueOf(b)){

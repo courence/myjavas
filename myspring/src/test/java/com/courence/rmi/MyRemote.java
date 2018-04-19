@@ -12,7 +12,7 @@ public class MyRemote extends UnicastRemoteObject implements IMyRemote {
 
 	private static final long serialVersionUID = 1L;
 
-	@Override
+
 	public String sayHello() {
 		return "server says,'hey'";
 	}
