@@ -10,7 +10,30 @@ public class TempTest {
 	static ThreadLocal<String> local = new ThreadLocal<String>();
 
 	public static void main(String[] args) throws InterruptedException {
-		SingletonDemo.INSTANCE.otherMethods1();
+
+		String a = new StringBuilder("123a").append("4").toString();
+//		System.out.println(a==a.intern());
+//		String b = "123a4";
+
+//		String c = "123"+"a4";
+//		System.out.println(b==c);
+		char[] cs = {'c','l','a','s','s'};
+		String e = new String(cs);
+		System.out.println(e==e.intern());
+		String b = "12a";
+		String c = new String("12a");
+		System.out.println(e);
+		System.out.println(e==e.intern());
+		System.out.println(b==b.intern());
+		System.out.println(e==b);
+		System.out.println(e==b);
+		System.out.println(b==c.intern());
+		
+		
+		
+	}
+	public static void test(){
+		
 	}
 }
 
